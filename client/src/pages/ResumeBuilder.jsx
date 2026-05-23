@@ -10,7 +10,7 @@ const ResumeBuilder = () => {
     const [isGenerating, setIsGenerating] = useState(false);
     const resumeRef = useRef(null);
 
-    // Load from local storage for persistence across reloads
+
     const [resumeContent, setResumeContent] = useState(() => {
         return localStorage.getItem('resumeContent') || '';
     });
@@ -74,7 +74,6 @@ const ResumeBuilder = () => {
             jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
-        // Temporarily adjust styles for better PDF rendering if needed
         const element = resumeRef.current;
         const originalPadding = element.style.padding;
         const originalBoxShadow = element.style.boxShadow;

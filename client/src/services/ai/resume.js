@@ -75,7 +75,7 @@ export const parseResumeForProfile = async (resumeText) => {
             body: JSON.stringify({
                 model: AI_CONFIG.MODEL,
                 messages: [{ role: 'user', content: prompt }],
-                temperature: 0.2, // Low temperature for more deterministic/factual extraction
+                temperature: 0.2, 
                 max_tokens: 1500,
                 response_format: { type: "json_object" }
             })
