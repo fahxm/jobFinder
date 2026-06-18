@@ -705,18 +705,133 @@ body {
     color: var(--text-secondary);
 }
 
-/* Mobile Responsive */
+/* Form Grids */
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.form-grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 15px;
+}
+
+.profile-header-flex {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 48px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 32px;
+}
+
+.resume-action-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.resume-preview {
+    background: white;
+    padding: 50px;
+    box-shadow: var(--shadow-md);
+    min-height: 800px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #111827;
+    border-radius: 8px;
+    word-wrap: break-word;
+}
+
+/* Mobile Responsive and Mobile UI specific styles */
+.mobile-navbar {
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-primary);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.mobile-navbar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+}
+
+.mobile-menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-overlay {
+    background: var(--bg-primary);
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+}
+
+.mobile-nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 16px;
+}
+
+.mobile-nav-link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.mobile-nav-link.active, .mobile-nav-link:hover {
+    color: var(--accent-primary);
+}
+
+.mobile-nav-btn {
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 @media (max-width: 768px) {
-    .navbar {
-        padding: 12px 20px;
-    }
-
-    .nav-links {
-        display: none;
-    }
-
     .hero-content h1 {
         font-size: 2.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1.1rem;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
     }
 
     #chatbot-container {
@@ -725,6 +840,70 @@ body {
         bottom: 16px;
     }
 
+    .jobs-container, .career-container, .about-container, .profile-container, .resume-builder-container {
+        padding: 40px 20px;
+    }
+
+    .search-bar {
+        flex-direction: column;
+    }
+
+    .jobs-grid, .form-grid-2, .form-grid-3, .form-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-header-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .resume-action-btns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .resume-preview {
+        padding: 20px;
+        font-size: 14px;
+        min-height: auto;
+    }
+
+    .roadmap::before {
+        left: 20px;
+    }
+
+    .roadmap-item, .roadmap-item:nth-child(even) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .roadmap-dot {
+        left: 20px;
+    }
+
+    .roadmap-content {
+        width: 100%;
+        margin-left: 48px;
+        width: calc(100% - 48px);
+    }
+    
+    .year-label {
+        top: -24px;
+        left: 48px;
+    }
+
+    .about-content, .about-features {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .career-header h1, .about-header h1 {
+        font-size: 2rem;
+    }
+    
+    .career-form h3 {
+        font-size: 1.5rem;
+    }
 }
 
 /* Profile Styles */

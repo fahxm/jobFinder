@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import useIsMobile from '../hooks/useIsMobile';
 import '../styles/Login.css';
 
 const Login = () => {
@@ -19,6 +20,7 @@ const Login = () => {
 
     const navigate = useNavigate();
     const { login, signup } = useAuth();
+    const isMobile = useIsMobile();
 
     const handleRegisterClick = () => setIsActive(true);
     const handleLoginClick = () => setIsActive(false);
@@ -71,6 +73,57 @@ const Login = () => {
     const handleForgotPassword = () => {
         alert("Forgot password feature is not available right now");
     };
+
+    if (isMobile) {
+        return (
+            <div className="login-body">
+                <div className="mobile-auth-container">
+                    {isActive ? (
+                        <form onSubmit={handleSignup} className="mobile-form">
+                            <h1>Create Account</h1>
+                            <span>Register to use all site features</span>
+                            <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
+                            <input type="email" placeholder="Email" value={signupEmail} onChange={(e) => setSignupEmail(e.target.value)} required />
+                            <div className="password-wrapper">
+                                <input type={showSignupPassword ? "text" : "password"} placeholder="Password" value={signupPassword} onChange={(e) => setSignupPassword(e.target.value)} required />
+                                <i className="fa fa-eye" onClick={() => setShowSignupPassword(!showSignupPassword)}></i>
+                            </div>
+                            <div className="password-wrapper">
+                                <input type={showConfirmPassword ? "text" : "password"} placeholder="Confirm Password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                                <i className="fa fa-eye" onClick={() => setShowConfirmPassword(!showConfirmPassword)}></i>
+                            </div>
+                            {signupPassword !== confirmPassword && confirmPassword && (
+                                <p style={{ color: 'red', margin: '5px 0', fontSize: '12px' }}>Passwords do not match</p>
+                            )}
+                            <div className="checkbox-container" style={{ justifyContent: 'center' }}>
+                                <input type="checkbox" id="terms-checkbox-mobile" checked={termsAccepted} onChange={(e) => setTermsAccepted(e.target.checked)} />
+                                <label htmlFor="terms-checkbox-mobile">I agree to terms & conditions</label>
+                            </div>
+                            <button type="submit" disabled={!termsAccepted || loading} className="mobile-submit-btn">{loading ? 'Signing Up...' : 'Sign Up'}</button>
+                            <p className="mobile-switch-text">
+                                Already have an account? <a href="#" onClick={(e) => { e.preventDefault(); handleLoginClick(); }}>Sign In</a>
+                            </p>
+                        </form>
+                    ) : (
+                        <form onSubmit={handleLogin} className="mobile-form">
+                            <h1>Sign In</h1>
+                            <span>Welcome back! Please sign in.</span>
+                            <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                            <div className="password-wrapper">
+                                <input type={showPassword ? "text" : "password"} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                                <i className="fa fa-eye" onClick={() => setShowPassword(!showPassword)}></i>
+                            </div>
+                            <a href="#" onClick={handleForgotPassword} style={{ margin: '15px 0', display: 'block', textAlign: 'center' }}>Forgot your password?</a>
+                            <button type="submit" disabled={loading} className="mobile-submit-btn">{loading ? 'Signing In...' : 'Sign In'}</button>
+                            <p className="mobile-switch-text">
+                                Don't have an account? <a href="#" onClick={(e) => { e.preventDefault(); handleRegisterClick(); }}>Sign Up</a>
+                            </p>
+                        </form>
+                    )}
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="login-body">

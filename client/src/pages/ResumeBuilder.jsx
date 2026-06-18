@@ -124,7 +124,7 @@ const ResumeBuilder = () => {
                     {/* Contact Info */}
                     <div className="form-section" style={{ marginBottom: '40px' }}>
                         <h3 style={{ borderBottom: '2px solid var(--accent-light)', paddingBottom: '10px', marginBottom: '24px' }}>Contact Information</h3>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                        <div className="form-grid-2">
                             <div className="form-group">
                                 <label>Full Name</label>
                                 <input type="text" placeholder="e.g. John Doe" value={formData.contact.fullName} onChange={(e) => updateContact('fullName', e.target.value)} />
@@ -153,7 +153,7 @@ const ResumeBuilder = () => {
                     </div>
 
                     {/* Summary & Skills */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '40px' }}>
+                    <div className="form-grid-2" style={{ marginBottom: '40px' }}>
                         <div className="form-group">
                             <h3 style={{ marginBottom: '15px' }}>Professional Summary</h3>
                             <label>Describe your career highlights and goals</label>
@@ -171,7 +171,7 @@ const ResumeBuilder = () => {
                         <h3 style={{ borderBottom: '2px solid var(--accent-light)', paddingBottom: '10px', marginBottom: '20px' }}>Work Experience</h3>
                         {formData.workExperience.map((work, index) => (
                             <div key={index} style={{ marginBottom: '24px', padding: '24px', border: '1px solid var(--border-color)', borderRadius: '12px', position: 'relative', background: '#fcfcfd' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+                                <div className="form-grid-3" style={{ marginBottom: '20px' }}>
                                     <div className="form-group" style={{ marginBottom: 0 }}>
                                         <label>Company Name</label>
                                         <input type="text" placeholder="e.g. Google" value={work.company} onChange={(e) => updateListField('workExperience', index, 'company', e.target.value)} />
@@ -202,7 +202,7 @@ const ResumeBuilder = () => {
                         <h3 style={{ borderBottom: '2px solid var(--accent-light)', paddingBottom: '10px', marginBottom: '20px' }}>Education</h3>
                         {formData.education.map((edu, index) => (
                             <div key={index} style={{ marginBottom: '16px' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '15px' }}>
+                                <div className="form-grid-4">
                                     <div className="form-group" style={{ marginBottom: 0 }}>
                                         <label>Institution</label>
                                         <input type="text" placeholder="University Name" value={edu.school} onChange={(e) => updateListField('education', index, 'school', e.target.value)} />
@@ -233,7 +233,7 @@ const ResumeBuilder = () => {
                         <h3 style={{ borderBottom: '2px solid var(--accent-light)', paddingBottom: '10px', marginBottom: '20px' }}>Key Projects</h3>
                         {formData.projects.map((proj, index) => (
                             <div key={index} style={{ marginBottom: '24px', padding: '24px', border: '1px solid var(--border-color)', borderRadius: '12px', background: '#fcfcfd' }}>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+                                <div className="form-grid-2" style={{ marginBottom: '20px' }}>
                                     <div className="form-group" style={{ marginBottom: 0 }}>
                                         <label>Project Title</label>
                                         <input type="text" placeholder="e.g. E-Commerce Platform" value={proj.title} onChange={(e) => updateListField('projects', index, 'title', e.target.value)} />
@@ -256,7 +256,7 @@ const ResumeBuilder = () => {
                     </div>
 
                     {/* Certifications & Languages */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: '40px' }}>
+                    <div className="form-grid-2" style={{ marginBottom: '40px' }}>
                         <div className="form-group">
                             <h3 style={{ marginBottom: '15px' }}>Certifications</h3>
                             <label>Professional certificates and licenses</label>
@@ -280,9 +280,9 @@ const ResumeBuilder = () => {
 
                     {resumeContent && (
                         <div id="resume-output" style={{ marginTop: '50px', padding: '40px', background: '#f9fafb', borderRadius: '15px', border: '2px dashed var(--accent-light)' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' }}>
+                            <div className="profile-header-flex" style={{ marginBottom: '30px', borderBottom: 'none', paddingBottom: '0' }}>
                                 <h3 style={{ color: 'var(--accent-primary)', marginBottom: 0 }}>Your Professional ATS Resume</h3>
-                                <div style={{ display: 'flex', gap: '15px' }}>
+                                <div className="resume-action-btns">
                                     <button className="nav-btn" onClick={() => { navigator.clipboard.writeText(resumeContent); alert("Resume copied to clipboard! You can paste it into a Word doc or Google Doc."); }}>
                                         <i className="fas fa-copy"></i> Copy Text
                                     </button>
@@ -291,7 +291,7 @@ const ResumeBuilder = () => {
                                     </button>
                                 </div>
                             </div>
-                            <div className="resume-preview" ref={resumeRef} style={{ background: 'white', padding: '50px', boxShadow: 'var(--shadow-md)', minHeight: '800px', fontSize: '15px', lineHeight: '1.6', color: '#111827', borderRadius: '8px' }}>
+                            <div className="resume-preview" ref={resumeRef}>
                                 <ReactMarkdown>{resumeContent}</ReactMarkdown>
                             </div>
                         </div>

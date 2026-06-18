@@ -112,8 +112,8 @@ const Profile = () => {
             <Navbar />
             <div className="profile-container" style={{ marginTop: '50px' }}>
                 <div style={{ background: 'white', borderRadius: '20px', padding: '48px', boxShadow: 'var(--shadow-md)', border: '1px solid var(--border-color)' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '32px', marginBottom: '48px', borderBottom: '2px solid var(--border-color)', paddingBottom: '32px' }}>
-                        <div style={{ width: '100px', height: '100px', background: 'var(--accent-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '48px', color: 'var(--accent-primary)' }}>
+                    <div className="profile-header-flex">
+                        <div style={{ width: '100px', height: '100px', background: 'var(--accent-light)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '48px', color: 'var(--accent-primary)', margin: '0 auto' }}>
                             <i className="fas fa-user"></i>
                         </div>
                         <div>

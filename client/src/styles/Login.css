@@ -33,7 +33,7 @@
     font-size: 12px;
 }
 
-.auth-container a {
+.auth-container a, .mobile-form > a {
     color: #3b82f6;
     font-size: 13px;
     font-weight: 500;
@@ -49,11 +49,11 @@
     transform: translateY(-2px);
 }
 
-.auth-container a:hover {
+.auth-container a:hover, .mobile-form > a:hover {
     text-decoration: none;
 }
 
-.auth-container button {
+.auth-container button, .mobile-submit-btn {
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: #fff;
     font-size: 13px;
@@ -69,7 +69,7 @@
     box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
 }
 
-.auth-container button:hover {
+.auth-container button:hover, .mobile-submit-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
 }
@@ -97,13 +97,13 @@
     height: 100%;
 }
 
-.auth-container input:focus {
+.auth-container input:focus, .mobile-form input:focus {
     border-color: #3b82f6;
     background-color: #fff;
     box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
 }
 
-.auth-container input {
+.auth-container input, .mobile-form input {
     background-color: #f8fafc;
     color: #1e293b;
     border: 1px solid #e2e8f0;
@@ -302,33 +302,47 @@
     transform: translateX(200%);
 }
 
-@media (max-width: 768px) {
-    .auth-container {
-        width: 95%;
-        flex-direction: column;
-        border-radius: 10px;
-    }
+/* Mobile Specific Login UI */
+.mobile-auth-container {
+    background-color: #fff;
+    border-radius: 20px;
+    width: 95%;
+    max-width: 400px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
 
-    .toggle-container {
-        display: none;
-    }
+.mobile-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
 
-    .form-container {
-        position: static;
-        width: 100%;
-        opacity: 1;
-        transform: none !important;
-        z-index: auto !important;
-    }
+.mobile-form h1 {
+    margin-bottom: 10px;
+    color: #1e293b;
+}
 
-    .auth-container form {
-        padding: 20px;
-    }
+.mobile-form span {
+    font-size: 13px;
+    color: #64748b;
+    margin-bottom: 20px;
+}
 
-    .auth-container.active .sign-in,
-    .auth-container.active .sign-up {
-        transform: none;
-        opacity: 1;
-        z-index: auto;
-    }
+.mobile-submit-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.mobile-switch-text {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.mobile-switch-text a {
+    color: #3b82f6;
+    font-weight: 600;
+    text-decoration: none;
 }
