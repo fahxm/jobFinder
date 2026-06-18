@@ -79,7 +79,7 @@ const Profile = () => {
         const token = localStorage.getItem('jobFinderToken');
         setIsSaving(true);
         try {
-            const response = await fetch(`http://localhost:5000/api/user/${currentUser.email}`, {
+            const response = await fetch(`https://jobfinder-8yu2.onrender.com/api/user/${currentUser.email}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
