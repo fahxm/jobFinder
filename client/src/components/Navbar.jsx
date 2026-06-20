@@ -7,7 +7,7 @@ import { Menu, X } from 'lucide-react';
 const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { logout } = useAuth();
+    const { logout, currentUser } = useAuth();
     const isMobile = useIsMobile();
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -50,7 +50,13 @@ const Navbar = () => {
                             )}
                             <li><Link to="/resume-builder" onClick={closeMenu} className={location.pathname === '/resume-builder' ? 'mobile-nav-link active' : 'mobile-nav-link'}>Resume Builder</Link></li>
                             <li><Link to="/profile" onClick={closeMenu} className={location.pathname === '/profile' ? 'mobile-nav-link active' : 'mobile-nav-link'}>Profile</Link></li>
-                            <li><button onClick={handleLogout} className="mobile-nav-btn">Logout</button></li>
+                            <li>
+                                {currentUser ? (
+                                    <button onClick={handleLogout} className="mobile-nav-btn">Logout</button>
+                                ) : (
+                                    <button onClick={() => { closeMenu(); navigate('/login'); }} className="mobile-nav-btn">Login</button>
+                                )}
+                            </li>
                         </ul>
                     </div>
                 )}
@@ -78,7 +84,13 @@ const Navbar = () => {
                 )}
                 <li><Link to="/resume-builder" className={location.pathname === '/resume-builder' ? 'nav-link active' : 'nav-link'}>Resume Builder</Link></li>
                 <li><Link to="/profile" className={location.pathname === '/profile' ? 'nav-link active' : 'nav-link'}>Profile</Link></li>
-                <li><button onClick={handleLogout} className="nav-btn" id="logout-btn">Logout</button></li>
+                <li>
+                    {currentUser ? (
+                        <button onClick={handleLogout} className="nav-btn" id="logout-btn">Logout</button>
+                    ) : (
+                        <button onClick={() => navigate('/login')} className="nav-btn" id="login-btn">Login</button>
+                    )}
+                </li>
             </ul>
         </nav>
     );

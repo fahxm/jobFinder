@@ -77,6 +77,29 @@ const Login = () => {
     if (isMobile) {
         return (
             <div className="login-body">
+                <button 
+                    onClick={() => navigate('/home')}
+                    style={{
+                        position: 'absolute',
+                        top: '20px',
+                        right: '20px',
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        backgroundColor: '#fff',
+                        border: 'none',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+                        zIndex: 1000,
+                        color: '#333'
+                    }}
+                    title="Go to Home"
+                >
+                    <i className="fa fa-home" style={{ fontSize: '20px' }}></i>
+                </button>
                 <div className="mobile-auth-container">
                     {isActive ? (
                         <form onSubmit={handleSignup} className="mobile-form">
@@ -127,6 +150,29 @@ const Login = () => {
 
     return (
         <div className="login-body">
+            <button 
+                onClick={() => navigate('/home')}
+                style={{
+                    position: 'absolute',
+                    top: '20px',
+                    right: '20px',
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '50%',
+                    backgroundColor: '#fff',
+                    border: 'none',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+                    zIndex: 1000,
+                    color: '#333'
+                }}
+                title="Go to Home"
+            >
+                <i className="fa fa-home" style={{ fontSize: '20px' }}></i>
+            </button>
             <div className={`auth-container ${isActive ? 'active' : ''}`} id="container">
                 {/* SIGN UP */}
                 <div className="form-container sign-up">

@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import { AIService } from '../../services/ai-service';
 import { useAuth } from '../../context/AuthContext';
 
+import { useNavigate } from 'react-router-dom';
+
 const CareerRoadmap = () => {
-    const { userProfile } = useAuth();
+    const { userProfile, currentUser } = useAuth();
+    const navigate = useNavigate();
     const [currentRole, setCurrentRole] = useState('');
     const [roadmap, setRoadmap] = useState(null);
     const [isGeneratingRoadmap, setIsGeneratingRoadmap] = useState(false);
 
     const handleGenerateRoadmap = async () => {
+        if (!currentUser) {
+            alert("Please login to use this feature");
+            navigate('/login');
+            return;
+        }
         if (!currentRole.trim()) return alert("Please enter your current role first!");
         if (!userProfile) return alert("Profile is still loading or not set...");
         setIsGeneratingRoadmap(true);

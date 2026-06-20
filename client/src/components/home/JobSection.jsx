@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { AIService } from '../../services/ai-service';
 import { useAuth } from '../../context/AuthContext';
 
+import { useNavigate } from 'react-router-dom';
+
 const JobSection = () => {
-    const { userProfile } = useAuth();
+    const { userProfile, currentUser } = useAuth();
+    const navigate = useNavigate();
     const [jobs, setJobs] = useState([]);
     const [loading, setLoading] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
@@ -16,6 +19,11 @@ const JobSection = () => {
     const RAPID_API_KEY = '997b52feb0mshdbcd0f2b8112940p1cc865jsnd7b462c5ba22';
 
     const fetchJobs = async () => {
+        if (!currentUser) {
+            alert("Please login to use this feature");
+            navigate('/login');
+            return;
+        }
         setLoading(true);
         const fullQuery = `${searchQuery} in ${searchLocation}`;
         const url = `https://jsearch.p.rapidapi.com/search?query=${encodeURIComponent(fullQuery)}&num_pages=2`;

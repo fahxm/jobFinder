@@ -25,11 +25,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
-          <Route path="/home" element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          } />
+          <Route path="/home" element={<Home />} />
           <Route path="/profile" element={
             <ProtectedRoute>
               <Profile />
@@ -40,7 +36,7 @@ function App() {
               <ResumeBuilder />
             </ProtectedRoute>
           } />
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<Navigate to="/home" />} />
         </Routes>
       </Router>
     </AuthProvider>
